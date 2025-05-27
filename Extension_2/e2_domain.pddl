@@ -1,0 +1,66 @@
+(define (domain menu_semanal)
+    (:requirements :strips :typing)
+    (:types
+        plato dia tipo_plato - object
+        primero segundo - plato
+    )
+    (:predicates
+        (incompatible ?p1 - primero ?s2 - segundo)
+        (asignado_primero ?p - primero ?d - dia)
+        (asignado_segundo ?s - segundo ?d - dia)
+        (dia_completo ?d - dia)
+        (primero_libre ?d - dia)
+        (segundo_libre ?d - dia)
+        (primero_usado ?p - primero)
+        (segundo_usado ?s - segundo)
+        (es_tipo ?p - plato ?t - tipo_plato)
+    (tipo_primero_usado ?t - tipo_plato ?d - dia)
+        (tipo_segundo_usado ?t - tipo_plato ?d - dia)
+        (dia_siguiente ?d1 - dia ?d2 - dia)
+    )
+    (:action asignar_primero
+        :parameters (?p - primero ?d - dia ?t - tipo_plato)
+        :precondition (and 
+            (primero_libre ?d)
+            (not (primero_usado ?p))
+            (es_tipo ?p ?t)
+            (forall (?d_ant - dia) 
+                (imply (dia_siguiente ?d_ant ?d) 
+                    (not (tipo_primero_usado ?t ?d_ant))))
+        )
+        :effect (and 
+            (asignado_primero ?p ?d)
+            (not (primero_libre ?d))
+            (primero_usado ?p)
+            (tipo_primero_usado ?t ?d)
+        )
+    )
+    (:action asignar_segundo
+        :parameters (?s - segundo ?d - dia ?t - tipo_plato)
+        :precondition (and 
+            (segundo_libre ?d)
+            (not (segundo_usado ?s))
+            (es_tipo ?s ?t)
+            (forall (?d_ant - dia) 
+                (imply (dia_siguiente ?d_ant ?d) 
+                    (not (tipo_segundo_usado ?t ?d_ant))))
+            (forall (?p - primero) 
+                (imply (asignado_primero ?p ?d) (not (incompatible ?p ?s))))
+        )
+        :effect (and 
+            (asignado_segundo ?s ?d)
+            (not (segundo_libre ?d))
+            (segundo_usado ?s)
+            (tipo_segundo_usado ?t ?d)
+        )
+    )
+    (:action completar_dia
+        :parameters (?d - dia)
+        :precondition (and 
+            (not (primero_libre ?d))
+            (not (segundo_libre ?d))
+            (not (dia_completo ?d))
+        )
+        :effect (dia_completo ?d)
+    )
+)
