@@ -1,4 +1,4 @@
-(define (problem menu-semanal-ejemplo)
+(define (problem menu-semanal-e3)
   (:domain menu_semanal)
   (:objects 
     ; Primeros platos
