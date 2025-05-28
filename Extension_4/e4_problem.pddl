@@ -1,4 +1,4 @@
-(define (problem menu-semanal-solucionable)
+(define (problem menu-semanal-intermedio)
   (:domain menu_semanal)
   (:objects 
     ; Primeros platos
@@ -11,15 +11,14 @@
     sopa ensalada crema carne pescado - tipo_plato
   )
   (:init 
-    ; Platos obligatorios en días específicos
-    ; (obligatorio_dia p4 jue)         ; paella obligatoria los jueves
-    ; (obligatorio_dia s2 vie)         ; salmón obligatorio los viernes
+    ; SIN platos obligatorios por ahora
+    (obligatorio_dia p1 jue)         ; paella obligatoria los jueves
     
     ; Asociación de cada plato con su tipo
     (es_tipo p1 sopa)        ; p1 = sopa de verduras
     (es_tipo p2 ensalada)    ; p2 = ensalada mixta  
     (es_tipo p3 crema)       ; p3 = crema de champiñones
-    (es_tipo p4 pescado)     ; p4 = paella (primer plato de pescado)
+    (es_tipo p4 pescado)     ; p4 = paella
     (es_tipo p5 ensalada)    ; p5 = ensalada césar
     
     (es_tipo s1 carne)       ; s1 = filete de ternera
@@ -28,18 +27,18 @@
     (es_tipo s4 pescado)     ; s4 = lubina
     (es_tipo s5 carne)       ; s5 = cerdo a la plancha
     
-    ; Calorías ajustadas para garantizar combinaciones válidas (1000-1500 cal/día)
-    (= (calorias p1) 500)    ; sopa de verduras: 400 cal
-    (= (calorias p2) 500)    ; ensalada mixta: 450 cal
-    (= (calorias p3) 500)    ; crema de champiñones: 500 cal
-    (= (calorias p4) 500)    ; paella: 600 cal
-    (= (calorias p5) 500)    ; ensalada césar: 500 cal
+    ; Calorías balanceadas
+    (= (calorias p1) 400)    ; sopa de verduras
+    (= (calorias p2) 300)    ; ensalada mixta
+    (= (calorias p3) 450)    ; crema de champiñones
+    (= (calorias p4) 550)    ; paella
+    (= (calorias p5) 350)    ; ensalada césar
     
-    (= (calorias s1) 500)    ; filete de ternera: 700 cal
-    (= (calorias s2) 500)    ; salmón: 600 cal
-    (= (calorias s3) 500)    ; pollo: 600 cal
-    (= (calorias s4) 500)    ; lubina: 650 cal
-    (= (calorias s5) 500)    ; cerdo: 750 cal
+    (= (calorias s1) 700)    ; filete de ternera
+    (= (calorias s2) 600)    ; salmón
+    (= (calorias s3) 550)    ; pollo
+    (= (calorias s4) 500)    ; lubina
+    (= (calorias s5) 650)    ; cerdo a la plancha
     
     ; Inicializar contadores de calorías
     (= (calorias_dia lun) 0)
@@ -48,17 +47,16 @@
     (= (calorias_dia jue) 0)
     (= (calorias_dia vie) 0)
     
-    ; Orden de los días (día_siguiente día_anterior día_actual) 
+    ; Orden de los días
     (dia_siguiente lun mar)
     (dia_siguiente mar mie)
     (dia_siguiente mie jue)
     (dia_siguiente jue vie)
     
-    ; Incompatibilidades mínimas
-    ; (incompatible p1 s5)     ; sopa de verduras no va con cerdo (400+750=1150 cal - ok)
-    ; (incompatible p4 s2)     ; paella no va con salmón (demasiado pescado)
+    ; Solo una incompatibilidad simple
+    (incompatible p1 s5)     ; sopa no va con cerdo
     
-    ; Estado inicial - todos los días tienen espacios libres
+    ; Estado inicial
     (primero_libre lun)
     (primero_libre mar)
     (primero_libre mie)

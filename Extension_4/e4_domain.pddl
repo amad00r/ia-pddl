@@ -23,7 +23,6 @@
     (:functions
         (calorias ?p - plato)                ; Calorías de cada plato
         (calorias_dia ?d - dia)              ; Calorías totales del día
-        (total_calorias_menu)                ; Calorías totales del menú
     )
 
     (:action asignar_primero
@@ -32,7 +31,7 @@
             (primero_libre ?d)
             (not (primero_usado ?p))
             (es_tipo ?p ?t)
-            ; Si hay plato obligatorio, debe ser este
+            ; Si hay plato obligatorio para este día, debe ser este plato
             (forall (?p_obl - primero)
                 (imply (obligatorio_dia ?p_obl ?d) (= ?p ?p_obl)))
             ; No repetir tipo en días consecutivos
@@ -42,16 +41,6 @@
             (forall (?d_sig - dia)
                 (imply (dia_siguiente ?d ?d_sig)
                     (not (tipo_primero_usado ?t ?d_sig))))
-            ; Debe existir un segundo plato posible que permita cumplir calorías
-            (exists (?s - segundo ?t2 - tipo_plato)
-                (and
-                    (not (segundo_usado ?s))
-                    (es_tipo ?s ?t2)
-                    (not (incompatible ?p ?s))
-                    (>= (+ (calorias ?p) (calorias ?s)) 1000)
-                    (<= (+ (calorias ?p) (calorias ?s)) 1500)
-                )
-            )
         )
         :effect (and 
             (asignado_primero ?p ?d)
@@ -59,7 +48,6 @@
             (primero_usado ?p)
             (tipo_primero_usado ?t ?d)
             (increase (calorias_dia ?d) (calorias ?p))
-            (increase (total_calorias_menu) (calorias ?p))
         )
     )
 
@@ -69,7 +57,7 @@
             (segundo_libre ?d)
             (not (segundo_usado ?s))
             (es_tipo ?s ?t)
-            ; Si hay plato obligatorio, debe ser este
+            ; Si hay plato obligatorio para este día, debe ser este plato
             (forall (?s_obl - segundo)
                 (imply (obligatorio_dia ?s_obl ?d) (= ?s ?s_obl)))
             ; No repetir tipo en días consecutivos
@@ -79,10 +67,10 @@
             (forall (?d_sig - dia)
                 (imply (dia_siguiente ?d ?d_sig)
                     (not (tipo_segundo_usado ?t ?d_sig))))
-            ; Compatibilidad con el primero
+            ; Compatibilidad con el primero ya asignado
             (forall (?p - primero) 
                 (imply (asignado_primero ?p ?d) (not (incompatible ?p ?s))))
-            ; Al añadir el segundo, las calorías del día deben estar en rango
+            ; Verificar que las calorías totales estarán en rango válido
             (>= (+ (calorias_dia ?d) (calorias ?s)) 1000)
             (<= (+ (calorias_dia ?d) (calorias ?s)) 1500)
         )
@@ -92,18 +80,16 @@
             (segundo_usado ?s)
             (tipo_segundo_usado ?t ?d)
             (increase (calorias_dia ?d) (calorias ?s))
-            (increase (total_calorias_menu) (calorias ?s))
         )
     )
 
     (:action completar_dia
         :parameters (?d - dia)
         :precondition (and 
-            (not (primero_libre ?d))
-            (not (segundo_libre ?d))
-            (not (dia_completo ?d))
-            (>= (calorias_dia ?d) 1000)
-            (<= (calorias_dia ?d) 1500)
+            (not (primero_libre ?d))      ; Ya tiene primer plato
+            (not (segundo_libre ?d))      ; Ya tiene segundo plato
+            (not (dia_completo ?d))       ; Aún no está marcado como completo
+            ; Las calorías ya están verificadas en asignar_segundo
         )
         :effect (dia_completo ?d)
     )
