@@ -11,8 +11,8 @@
     sopa ensalada crema carne pescado - tipo_plato
   )
   (:init 
-    ; SIN platos obligatorios por ahora
-    (obligatorio_dia p1 jue)         ; paella obligatoria los jueves
+    ; Platos obligatorios
+    (obligatorio_dia p4 jue)         ; paella obligatoria los jueves
     (obligatorio_dia s3 vie)         ; sopa de pollo obligatoria los viernes
     
     ; Asociación de cada plato con su tipo
@@ -54,22 +54,9 @@
     (dia_siguiente mie jue)
     (dia_siguiente jue vie)
     
-    ; Solo una incompatibilidad simple
-    (incompatible p2 s1)
+    ; Incompatibilidades
+    (incompatible p2 s1)     ; ensalada mixta no va con filete
     (incompatible p1 s5)     ; sopa no va con cerdo
-    
-    ; Estado inicial
-    (primero_libre lun)
-    (primero_libre mar)
-    (primero_libre mie)
-    (primero_libre jue)
-    (primero_libre vie)
-    
-    (segundo_libre lun)
-    (segundo_libre mar)
-    (segundo_libre mie)
-    (segundo_libre jue)
-    (segundo_libre vie)
   )
   (:goal 
     (and 
