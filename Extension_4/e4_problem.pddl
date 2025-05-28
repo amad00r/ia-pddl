@@ -13,6 +13,7 @@
   (:init 
     ; SIN platos obligatorios por ahora
     (obligatorio_dia p1 jue)         ; paella obligatoria los jueves
+    (obligatorio_dia s3 vie)         ; sopa de pollo obligatoria los viernes
     
     ; Asociación de cada plato con su tipo
     (es_tipo p1 sopa)        ; p1 = sopa de verduras
@@ -23,7 +24,7 @@
     
     (es_tipo s1 carne)       ; s1 = filete de ternera
     (es_tipo s2 pescado)     ; s2 = salmón
-    (es_tipo s3 carne)       ; s3 = pollo
+    (es_tipo s3 sopa)        ; s3 = sopa de pollo
     (es_tipo s4 pescado)     ; s4 = lubina
     (es_tipo s5 carne)       ; s5 = cerdo a la plancha
     
@@ -38,7 +39,7 @@
     (= (calorias s2) 600)    ; salmón
     (= (calorias s3) 550)    ; pollo
     (= (calorias s4) 500)    ; lubina
-    (= (calorias s5) 650)    ; cerdo a la plancha
+    (= (calorias s5) 700)    ; cerdo a la plancha
     
     ; Inicializar contadores de calorías
     (= (calorias_dia lun) 0)
@@ -54,6 +55,7 @@
     (dia_siguiente jue vie)
     
     ; Solo una incompatibilidad simple
+    (incompatible p2 s1)
     (incompatible p1 s5)     ; sopa no va con cerdo
     
     ; Estado inicial
