@@ -58,6 +58,7 @@ def main():
     plate_list = extract_plates_from_solution("./last_result.out")
     total_price = calculate_total_price(price_dict, plate_list)
     print("Plates assigned in the solution: ", plate_list)
+    print("Price list from PDDL file: ", price_dict)
     print(f"Total price for the plates: {total_price:.2f} euros")
 
 if __name__ == "__main__":
