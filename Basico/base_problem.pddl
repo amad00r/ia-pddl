@@ -26,7 +26,8 @@
     
     ; Incompatibilidades
     (incompatible p1 s1)     
-    (incompatible p2 s2)     
+    (incompatible p2 s2)   
+    (incompatible p1 s2)  
   )
   (:goal 
     (and 
