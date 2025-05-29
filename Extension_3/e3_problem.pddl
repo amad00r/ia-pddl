@@ -41,19 +41,7 @@
     (incompatible p3 s3)     ; crema de champiñones no va con pollo
     (incompatible p4 s4)     ; paella no va con lubina (demasiado pescado)
     (incompatible p5 s5)     ; ensalada césar no va con cerdo
-    
-    ; Estado inicial - todos los días tienen espacios libres
-    (primero_libre lun)
-    (primero_libre mar)
-    (primero_libre mie)
-    (primero_libre jue)
-    (primero_libre vie)
-    
-    (segundo_libre lun)
-    (segundo_libre mar)
-    (segundo_libre mie)
-    (segundo_libre jue)
-    (segundo_libre vie)
+
   )
   (:goal 
     (and 
