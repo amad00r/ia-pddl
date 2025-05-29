@@ -12,40 +12,51 @@
         (primero_usado ?p - primero)
         (segundo_usado ?s - segundo)
         (es_tipo ?p - plato ?t - tipo_plato)
-
-
+        (tipo_usado ?t - tipo_plato ?d - dia)
+        (dia_siguiente ?d1 - dia ?d2 - dia)
+        (tipo_primero_usado ?t - tipo_plato ?d - dia)
+        (tipo_segundo_usado ?t - tipo_plato ?d - dia)
     )
 
     (:action asignar_primero
-        :parameters (?p - primero ?d - dia)
+        :parameters (?p - primero ?d - dia ?t - tipo_plato)
         :precondition (and 
             (not (asignado_primero ?p ?d))
             (not (primero_usado ?p))
-            (not (exists (?p2 - primero) (asignado_primero ?p2 ?d)))
+            (es_tipo ?p ?t)
+            (not (tipo_primero_usado ?t ?d))
         )
         :effect (and 
             (asignado_primero ?p ?d)
             (primero_usado ?p)
+            (tipo_primero_usado ?t ?d)
+            (tipo_usado ?t ?d)
         )
     )
-    
+
     (:action asignar_segundo
-        :parameters (?s - segundo ?d - dia)
+        :parameters (?s - segundo ?d - dia ?t - tipo_plato)
         :precondition (and 
             (not (asignado_segundo ?s ?d))
             (not (segundo_usado ?s))
-            (not (exists (?s2 - segundo) (asignado_segundo ?s2 ?d)))
-            (exists (?p - primero) (asignado_primero ?p ?d))
-            (forall (?p - primero) 
-                (imply (asignado_primero ?p ?d) (not (incompatible ?p ?s))))
+            (es_tipo ?s ?t)
+            (not (tipo_segundo_usado ?t ?d))
+            (not (exists (?p - primero)
+                (and 
+                    (asignado_primero ?p ?d)
+                    (incompatible ?p ?s)
+                )
+            ))
         )
         :effect (and 
             (asignado_segundo ?s ?d)
             (segundo_usado ?s)
+            (tipo_segundo_usado ?t ?d)
+            (tipo_usado ?t ?d)
         )
     )
 
-    (:action completar_dia
+    (:action marcar_dia_completo
         :parameters (?d - dia)
         :precondition (and 
             (exists (?p - primero) (asignado_primero ?p ?d))
