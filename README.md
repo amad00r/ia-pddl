@@ -6,6 +6,8 @@ Para ejecutar los scripts correspondientes a cada caso, utiliza los siguientes c
 
 ### Caso Básico
 
+> **NOTA:** Ejecutar los comandos desde la carpeta de `Metric-FF`.
+
 ```bash
 ./ff -o ../Basico/base_domain.pddl -f ../Basico/base_problem.pddl
 ```
@@ -34,5 +36,12 @@ Para ejecutar los scripts correspondientes a cada caso, utiliza los siguientes c
 
 - **Extensión 5**
     ```bash
-    ./ff -o ../Extension_5/e5_domain.pddl -f ../Extension_5/e5_problem.pddl
+    ./ff -o ../Extension_5/e5_domain.pddl -f ../Extension_5/e5_problem.pddl -O > ../Extension_5/last_result.out
     ```
+    
+Para parsear los resultados generados, ejecuta el siguiente comando desde otra terminal, ubicándote en la carpeta `Extension_5`:
+
+```bash
+python3 parserPrice.py
+```
+
