@@ -31,17 +31,21 @@ Para ejecutar los scripts correspondientes a cada caso, utiliza los siguientes c
 
 - **Extensión 4**
     ```bash
-    ./ff -o ../Extension_4/e4_domain.pddl -f ../Extension_4/e4_problem.pddl
+    ./ff -o ../Extension_4/e4_domain.pddl -f ../Extension_4/e4_problem.pddl > ../Extension_4/last_result.out 
     ```
+    Para parsear los resultados generados, ejecuta el siguiente comando desde otra terminal, ubicándote en la carpeta `Extension_4`:
+
+    ```bash
+    python3 parserCal.py
 
 - **Extensión 5**
     ```bash
     ./ff -o ../Extension_5/e5_domain.pddl -f ../Extension_5/e5_problem.pddl -O > ../Extension_5/last_result.out
     ```
     
-Para parsear los resultados generados, ejecuta el siguiente comando desde otra terminal, ubicándote en la carpeta `Extension_5`:
+    Para parsear los resultados generados, ejecuta el siguiente comando desde otra terminal, ubicándote en la carpeta `Extension_5`:
 
-```bash
-python3 parserPrice.py
+    ```bash
+    python3 parserPrice.py
 ```
 

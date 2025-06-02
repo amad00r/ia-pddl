@@ -6,13 +6,9 @@ def parse_pddl_file(file_path):
         
     for line in lines:
         line = line.strip()
-        # Look for price definitions
         if '(= (precio ' in line:
             parts = line.split()
-            #print("parts:", parts)
             if len(parts) >= 4:
-                #print("part 2:", parts[2].strip(')'))
-                #print("part 3:", parts[3].strip(')'))
                 plate_id = parts[2].strip(')')  # Extract p1, p2, s1, s2, etc.
                 price = float(parts[3].strip(')'))
                 plate_prices[plate_id.capitalize()] = price
@@ -34,11 +30,10 @@ def extract_plates_from_solution(file_path):
         if 'ASIGNAR_PRIMERO' in line:
             parts = line.split()
             if len(parts) >= 2:
-                paltos.append(parts[2 + offset])  # Extract P1, P2, etc.
-        elif 'ASIGNAR_SEGUNDO' in line:
+                paltos.append(parts[2 + offset])  
             parts = line.split()
             if len(parts) >= 2:
-                paltos.append(parts[2 + offset])  # Extract S1, S2, etc.
+                paltos.append(parts[2 + offset])  
     
     return paltos
 
