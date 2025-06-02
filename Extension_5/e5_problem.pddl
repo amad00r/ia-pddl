@@ -58,14 +58,14 @@
     (= (precio p3) 10.00)     
     (= (precio p4) 10.00)     
     (= (precio p5) 10.00)        
-    (= (precio p51) 10.50)     
+    (= (precio p51) 9.00)     
     
     (= (precio s1) 10.00)    
     (= (precio s2) 10.00)   
     (= (precio s3) 10.00)     
     (= (precio s4) 10.00)    
     (= (precio s5) 10.00)        
-    (= (precio s51) 10.50)   
+    (= (precio s51) 8.50)   
     
     ; Inicializar contadores
     (= (calorias_dia lun) 0)

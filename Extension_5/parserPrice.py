@@ -31,6 +31,7 @@ def extract_plates_from_solution(file_path):
             parts = line.split()
             if len(parts) >= 2:
                 paltos.append(parts[2 + offset])  
+        if 'ASIGNAR_SEGUNDO' in line:
             parts = line.split()
             if len(parts) >= 2:
                 paltos.append(parts[2 + offset])  
