@@ -10,7 +10,6 @@
         (asignado_segundo ?s - segundo ?d - dia)
         (dia_completo ?d - dia)
         (es_tipo ?p - plato ?t - tipo_plato)
-        (tipo_usado ?t - tipo_plato ?d - dia)
         (dia_siguiente ?d1 - dia ?d2 - dia)
         (tipo_primero_usado ?t - tipo_plato ?d - dia)
         (tipo_segundo_usado ?t - tipo_plato ?d - dia)
@@ -26,7 +25,6 @@
         :effect (and 
             (asignado_primero ?p ?d)
             (tipo_primero_usado ?t ?d)
-            (tipo_usado ?t ?d)
         )
     )
 
@@ -46,7 +44,6 @@
         :effect (and 
             (asignado_segundo ?s ?d)
             (tipo_segundo_usado ?t ?d)
-            (tipo_usado ?t ?d)
         )
     )
 

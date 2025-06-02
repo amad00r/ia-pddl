@@ -12,7 +12,6 @@
         (primero_usado ?p - primero)
         (segundo_usado ?s - segundo)
         (es_tipo ?p - plato ?t - tipo_plato)
-        (tipo_usado ?t - tipo_plato ?d - dia)
         (dia_siguiente ?d1 - dia ?d2 - dia)
         (tipo_primero_usado ?t - tipo_plato ?d - dia)
         (tipo_segundo_usado ?t - tipo_plato ?d - dia)
@@ -30,7 +29,6 @@
             (asignado_primero ?p ?d)
             (primero_usado ?p)
             (tipo_primero_usado ?t ?d)
-            (tipo_usado ?t ?d)
         )
     )
 
@@ -52,7 +50,6 @@
             (asignado_segundo ?s ?d)
             (segundo_usado ?s)
             (tipo_segundo_usado ?t ?d)
-            (tipo_usado ?t ?d)
         )
     )
 
