@@ -47,5 +47,11 @@ Para ejecutar los scripts correspondientes a cada caso, utiliza los siguientes c
 
     ```bash
     python3 parserPrice.py
-```
+    
+### Generar Juegos de Prueba
 
+Para generar juegos de prueba, ejecuta el script `generador-tests.py` con el siguiente comando en la terminal:
+
+```bash
+python3 generador-tests.py
+```

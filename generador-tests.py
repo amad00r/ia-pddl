@@ -63,7 +63,7 @@ def main():
 		("ensalada_cesar", "estofado_de_cordero"),
 	]
 
-	dias = ["lun", "mar", "mier", "jue", "vie"]
+	dias = ["lun", "mar", "mie", "jue", "vie"]
 
 	for i in range(n):
 		filename = f"{carpeta}/test-{i}.pddl"
@@ -108,9 +108,8 @@ def main():
 						f.write(f"\t\t(= (calorias {plato}) {calorias[plato]})\n")
 					if ext >= 5:
 						f.write(f"\t\t(= (precio {plato}) {precios[plato]})\n")
-                    
-					f.write("\n")
-					
+			
+			f.write("\n")
 
 			for tipo, platos in platos_seleccionados_segundo.items():
 				for plato in platos:
@@ -120,7 +119,7 @@ def main():
 					if ext >= 5:
 						f.write(f"\t\t(= (precio {plato}) {precios[plato]})\n")
 
-					f.write("\n")
+			f.write("\n")
 
 			for (p1, s1) in incompatibilidades:
 				if any(p1 in platos1 for platos1 in platos_seleccionados_primero.values()) and any(s1 in platos2 for platos2 in platos_seleccionados_segundo.values()):

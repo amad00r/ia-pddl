@@ -1,3 +1,5 @@
+import sys
+
 def parse_pddl_file(file_path):
     """Parse the PDDL file to extract plate prices"""
     plate_prices = {}
@@ -9,10 +11,10 @@ def parse_pddl_file(file_path):
         if '(= (precio ' in line:
             parts = line.split()
             if len(parts) >= 4:
-                plate_id = parts[2].strip(')')  # Extract p1, p2, s1, s2, etc.
+                plate_id = parts[2].strip(')').upper()
                 price = float(parts[3].strip(')'))
-                plate_prices[plate_id.capitalize()] = price
-    
+                plate_prices[plate_id] = price
+
     return plate_prices
 
 def extract_plates_from_solution(file_path):
@@ -50,8 +52,13 @@ def calculate_total_price(plate_prices, plates):
     return total_price
 
 def main():
-    price_dict = parse_pddl_file("./e5_problem.pddl")
-    plate_list = extract_plates_from_solution("./last_result.out")
+
+    if len(sys.argv) != 3:
+        print("Usage: python parserPrice.py <problem_path> <solution_out_path>")
+        sys.exit(1)
+
+    price_dict = parse_pddl_file(sys.argv[1])
+    plate_list = extract_plates_from_solution(sys.argv[2])
     total_price = calculate_total_price(price_dict, plate_list)
     print("Plates assigned in the solution: ", plate_list)
     print("Price list from PDDL file: ", price_dict)

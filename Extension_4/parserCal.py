@@ -1,3 +1,5 @@
+import sys
+
 def parse_pddl_file(file_path):
     """Parse the PDDL file to extract plate prices"""
     plate_cal = {}
@@ -11,7 +13,7 @@ def parse_pddl_file(file_path):
             if len(parts) >= 4:
                 plate_id = parts[2].strip(')')  
                 cal = float(parts[3].strip(')'))
-                plate_cal[plate_id.capitalize()] = cal
+                plate_cal[plate_id.upper()] = cal
     
     return plate_cal
 
@@ -43,7 +45,7 @@ def calculate_total_cal(cal_dict, days):
     for day, plates in days.items():
         total_cal = 0
         for plate_id in plates:
-            plate_id_clean = plate_id.strip().capitalize()
+            plate_id_clean = plate_id.strip().upper()
             if plate_id_clean in cal_dict:
                 total_cal += cal_dict[plate_id_clean]
             else:
@@ -51,8 +53,15 @@ def calculate_total_cal(cal_dict, days):
         print(f"Total calories for {day}: {total_cal}")
 
 def main():
-    cal_dict = parse_pddl_file("./e4_problem.pddl")
-    menu_list = extract_menus_from_solution("./last_result.out")
+
+    if len(sys.argv) != 3:
+        print("Usage: python parserCal.py <problem_path> <solution_out_path>")
+        sys.exit(1)
+
+    problem_path = sys.argv[1]
+    solution_out_path = sys.argv[2]
+    cal_dict = parse_pddl_file(problem_path)
+    menu_list = extract_menus_from_solution(solution_out_path)
     print("Plates assigned in the solution: ", cal_dict)
     print("Price list from PDDL file: ", menu_list)
     calculate_total_cal(cal_dict, menu_list)
