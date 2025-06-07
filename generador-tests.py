@@ -66,7 +66,7 @@ def main():
 	dias = ["lun", "mar", "mie", "jue", "vie"]
 
 	for i in range(n):
-		filename = f"{carpeta}/test-{i}.pddl"
+		filename = f"{carpeta}/test{i}-problem.pddl"
 		with open(filename, "w", encoding="utf-8") as f:
 			f.write(f"(define (problem menu-semanal-extension-e{ext})\n")
 			f.write("\t(:domain menu_semanal)\n")

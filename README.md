@@ -6,48 +6,50 @@ Para ejecutar los scripts correspondientes a cada caso, utiliza los siguientes c
 
 ### Caso Básico
 
-> **NOTA:** Ejecutar los comandos desde la carpeta de `Metric-FF`.
+> **NOTA:** Ejecutar los comandos desde el root del proyecto.
 
 ```bash
-./ff -o ../Basico/base_domain.pddl -f ../Basico/base_problem.pddl
+Metric-FF/ff -o Basico/domain.pddl -f Basico/debug-problem.pddl
 ```
 
 ### Extensiones
 
 - **Extensión 1**
     ```bash
-    ./ff -o ../Extension_1/e1_domain.pddl -f ../Extension_1/e1_problem.pddl
+    Metric-FF/ff -o Extension_1/domain.pddl -f Extension_1/debug-problem.pddl
     ```
 
 - **Extensión 2**
     ```bash
-    ./ff -o ../Extension_2/e2_domain.pddl -f ../Extension_2/e2_problem.pddl
+    Metric-FF/ff -o Extension_2/domain.pddl -f Extension_2/debug-problem.pddl
     ```
 
 - **Extensión 3**
     ```bash
-    ./ff -o ../Extension_3/e3_domain.pddl -f ../Extension_3/e3_problem.pddl
+    Metric-FF/ff -o Extension_3/domain.pddl -f Extension_3/debug-problem.pddl
     ```
 
 - **Extensión 4**
     ```bash
-    ./ff -o ../Extension_4/e4_domain.pddl -f ../Extension_4/e4_problem.pddl > ../Extension_4/last_result.out 
+    Metric-FF/ff -o Extension_4/domain.pddl -f Extension_4/debug-problem.pddl
     ```
-    Para parsear los resultados generados, ejecuta el siguiente comando desde otra terminal, ubicándote en la carpeta `Extension_4`:
+    Para parsear los resultados generados:
 
     ```bash
-    python3 parserCal.py
+    echo "$(Metric-FF/ff -o Extension_4/domain.pddl -f Extension_4/debug-problem.pddl)" | python3 Extension_4/parserCal.py Extension_4/debug-problem.pddl /dev/stdin
+    ```
 
 - **Extensión 5**
     ```bash
-    ./ff -o ../Extension_5/e5_domain.pddl -f ../Extension_5/e5_problem.pddl -O > ../Extension_5/last_result.out
+    Metric-FF/ff -o Extension_5/domain.pddl -f Extension_5/debug-problem.pddl -O
     ```
-    
-    Para parsear los resultados generados, ejecuta el siguiente comando desde otra terminal, ubicándote en la carpeta `Extension_5`:
+
+    Para parsear los resultados generados:
 
     ```bash
-    python3 parserPrice.py
-    
+    echo "$(Metric-FF/ff -o Extension_5/domain.pddl -f Extension_5/debug-problem.pddl -O)" | python3 Extension_5/parserPrice.py Extension_5/debug-problem.pddl /dev/stdin
+    ```
+
 ### Generar Juegos de Prueba
 
 Para generar juegos de prueba, ejecuta el script `generador-tests.py` con el siguiente comando en la terminal:
