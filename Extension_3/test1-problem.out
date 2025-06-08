@@ -1,0 +1,60 @@
+
+ff: parsing domain file
+domain 'MENU_SEMANAL' defined
+ ... done.
+ff: parsing problem file
+problem 'MENU-SEMANAL-EXTENSION-E3' defined
+ ... done.
+
+
+no metric specified. plan length assumed.
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is EHC, if that fails then  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+Cueing down from goal distance:   15 into depth [1]
+                                  14            [1]
+                                  13            [1]
+                                  12            [1]
+                                  11            [1]
+                                  10            [1]
+                                   9            [1]
+                                   8            [1]
+                                   7            [1]
+                                   6            [1]
+                                   5            [1]
+                                   4            [1]
+                                   3            [1]
+                                   2            [1]
+                                   1            [1]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: ASIGNAR_PRIMERO CREMA_DE_ZANAHORIA LUN CREMA
+        1: ASIGNAR_SEGUNDO COSTILLAS_A_LA_BARBACOA LUN CARNE
+        2: ASIGNAR_PRIMERO SOPA_DE_VERDURAS MAR SOPA
+        3: ASIGNAR_SEGUNDO ARROZ_MELOSO_DE_VERDURAS MAR ARROZ
+        4: ASIGNAR_PRIMERO ENSALADA_DE_ATUN MIE ENSALADA
+        5: ASIGNAR_SEGUNDO ALBONDIGAS MIE CARNE
+        6: ASIGNAR_PRIMERO CREMA_DE_AGUACATE JUE CREMA
+        7: ASIGNAR_SEGUNDO BACALAO_AL_HORNO JUE PESCADO
+        8: ASIGNAR_PRIMERO SOPA_DE_POLLO VIE SOPA
+        9: ASIGNAR_SEGUNDO ARROZ_CON_COSTRA VIE ARROZ
+       10: MARCAR_DIA_COMPLETO LUN
+       11: MARCAR_DIA_COMPLETO MAR
+       12: MARCAR_DIA_COMPLETO MIE
+       13: MARCAR_DIA_COMPLETO JUE
+       14: MARCAR_DIA_COMPLETO VIE
+     
+
+time spent:    0.00 seconds instantiating 0 easy, 615 hard action templates
+               0.00 seconds reachability analysis, yielding 316 facts and 321 actions
+               0.00 seconds creating final representation with 250 relevant facts, 0 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 16 states, to a max depth of 1
+               0.00 seconds total time
+
