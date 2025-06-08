@@ -14,16 +14,16 @@ checking for cyclic := effects --- OK.
 ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
     metric is ((1.00*[RF5](PRECIO_TOTAL)) - () + 0.00)
 
-advancing to distance:   26
-                         22
-                         21
+advancing to distance:   32
+                         24
+                         20
                          19
-                         18
-                         16
                          15
-                         11
+                         14
+                         13
+                         12
+                         10
                           7
-                          6
                           5
                           4
                           3
@@ -33,16 +33,16 @@ advancing to distance:   26
 
 ff: found legal plan as follows
 
-step    0: ASIGNAR_PRIMERO CREMA_DE_ZANAHORIA JUE CREMA
-        1: ASIGNAR_SEGUNDO ARROZ_CON_COSTRA JUE ARROZ
-        2: ASIGNAR_PRIMERO SOPA_MINESTRONE MIE SOPA
-        3: ASIGNAR_SEGUNDO SALMON_A_LA_PLANCHA MIE PESCADO
-        4: ASIGNAR_PRIMERO CREMA_DE_CALABAZA MAR CREMA
-        5: ASIGNAR_SEGUNDO ALBONDIGAS MAR CARNE
-        6: ASIGNAR_PRIMERO ENSALADA_DE_ATUN VIE ENSALADA
-        7: ASIGNAR_PRIMERO SOPA_DE_LENTEJAS LUN SOPA
-        8: ASIGNAR_SEGUNDO CALAMARES_A_LA_ROMANA LUN PESCADO
-        9: ASIGNAR_SEGUNDO POLLO_ASADO VIE CARNE
+step    0: ASIGNAR_PRIMERO CREMA_DE_CALABAZA JUE CREMA
+        1: ASIGNAR_PRIMERO CREMA_DE_ZANAHORIA MAR CREMA
+        2: ASIGNAR_SEGUNDO PAELLA_MIXTA MAR ARROZ
+        3: ASIGNAR_PRIMERO SOPA_MINESTRONE LUN SOPA
+        4: ASIGNAR_SEGUNDO FILETE_DE_TERNERA LUN CARNE
+        5: ASIGNAR_SEGUNDO POLLO_ASADO JUE CARNE
+        6: ASIGNAR_PRIMERO ENSALADA_CESAR MIE ENSALADA
+        7: ASIGNAR_SEGUNDO BACALAO_AL_HORNO MIE PESCADO
+        8: ASIGNAR_PRIMERO SOPA_DE_VERDURAS VIE SOPA
+        9: ASIGNAR_SEGUNDO MERLUZA_EN_SALSA_VERDE VIE PESCADO
        10: MARCAR_DIA_COMPLETO LUN
        11: MARCAR_DIA_COMPLETO MAR
        12: MARCAR_DIA_COMPLETO MIE
@@ -50,11 +50,11 @@ step    0: ASIGNAR_PRIMERO CREMA_DE_ZANAHORIA JUE CREMA
        14: MARCAR_DIA_COMPLETO VIE
      
 
-time spent:    0.01 seconds instantiating 0 easy, 1224 hard action templates
-               0.00 seconds reachability analysis, yielding 337 facts and 627 actions
-               0.00 seconds creating final representation with 268 relevant facts, 11 relevant fluents
+time spent:    0.00 seconds instantiating 0 easy, 1181 hard action templates
+               0.00 seconds reachability analysis, yielding 347 facts and 669 actions
+               0.01 seconds creating final representation with 276 relevant facts, 11 relevant fluents
                0.00 seconds computing LNF
                0.00 seconds building connectivity graph
-               0.02 seconds searching, evaluating 271 states, to a max depth of 0
+               0.02 seconds searching, evaluating 254 states, to a max depth of 0
                0.03 seconds total time
 
