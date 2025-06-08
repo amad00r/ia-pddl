@@ -1,0 +1,75 @@
+(define (problem menu-semanal-extension-e4)
+	(:domain menu_semanal)
+	(:objects
+		lun mar mie jue vie - dia
+		sopa ensalada crema arroz pescado carne - tipo_plato
+		sopa_minestrone sopa_de_pollo sopa_de_lentejas sopa_de_tomate ensalada_cesar ensalada_de_quinoa crema_de_zanahoria crema_de_calabaza - primero
+		pollo_asado albondigas estofado_de_cordero filete_de_ternera atun_a_la_parrilla bacalao_al_horno arroz_a_la_cubana arroz_al_horno - segundo
+	)
+
+	(:init
+		(es_tipo sopa_minestrone sopa)
+		(= (calorias sopa_minestrone) 304)
+		(es_tipo sopa_de_pollo sopa)
+		(= (calorias sopa_de_pollo) 285)
+		(es_tipo sopa_de_lentejas sopa)
+		(= (calorias sopa_de_lentejas) 342)
+		(es_tipo sopa_de_tomate sopa)
+		(= (calorias sopa_de_tomate) 266)
+		(es_tipo ensalada_cesar ensalada)
+		(= (calorias ensalada_cesar) 247)
+		(es_tipo ensalada_de_quinoa ensalada)
+		(= (calorias ensalada_de_quinoa) 323)
+		(es_tipo crema_de_zanahoria crema)
+		(= (calorias crema_de_zanahoria) 228)
+		(es_tipo crema_de_calabaza crema)
+		(= (calorias crema_de_calabaza) 304)
+
+		(es_tipo pollo_asado carne)
+		(= (calorias pollo_asado) 1045)
+		(es_tipo albondigas carne)
+		(= (calorias albondigas) 1102)
+		(es_tipo estofado_de_cordero carne)
+		(= (calorias estofado_de_cordero) 1235)
+		(es_tipo filete_de_ternera carne)
+		(= (calorias filete_de_ternera) 1140)
+		(es_tipo atun_a_la_parrilla pescado)
+		(= (calorias atun_a_la_parrilla) 1007)
+		(es_tipo bacalao_al_horno pescado)
+		(= (calorias bacalao_al_horno) 950)
+		(es_tipo arroz_a_la_cubana arroz)
+		(= (calorias arroz_a_la_cubana) 1216)
+		(es_tipo arroz_al_horno arroz)
+		(= (calorias arroz_al_horno) 1140)
+
+		(incompatible sopa_de_lentejas filete_de_ternera)
+		(incompatible sopa_de_tomate atun_a_la_parrilla)
+		(incompatible ensalada_cesar pollo_asado)
+		(incompatible ensalada_de_quinoa bacalao_al_horno)
+		(incompatible ensalada_cesar estofado_de_cordero)
+
+		(obligatorio_dia pollo_asado lun)
+		(obligatorio_dia sopa_minestrone mar)
+		(obligatorio_dia bacalao_al_horno mie)
+
+		(dia_siguiente lun mar)
+		(dia_siguiente mar mie)
+		(dia_siguiente mie jue)
+		(dia_siguiente jue vie)
+		(= (calorias_dia lun) 0)
+		(= (calorias_dia mar) 0)
+		(= (calorias_dia mie) 0)
+		(= (calorias_dia jue) 0)
+		(= (calorias_dia vie) 0)
+	)
+
+	(:goal 
+		(and
+			(dia_completo lun)
+			(dia_completo mar)
+			(dia_completo mie)
+			(dia_completo jue)
+			(dia_completo vie)
+		)
+	)
+)
