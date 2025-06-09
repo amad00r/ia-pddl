@@ -4,7 +4,7 @@
 
 Para ejecutar los scripts correspondientes a cada caso, utiliza los siguientes comandos en la terminal:
 
-### Caso Básico
+### Versión Básica
 
 > **NOTA:** Ejecutar los comandos desde el root del proyecto.
 
